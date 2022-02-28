@@ -7,7 +7,7 @@ workspace "UseID" "Systemarchitektur" {
         }
 
         app = softwareSystem "bund ID App" "" "Software System" {
-            -> nkb "Schnittstelle"
+            -> nkb "Schnittstelle" "OAuth 2.0"
             -> eidServer "Schnittstelle" "SDK"
         }
 
