@@ -11,7 +11,7 @@ workspace "UseID" "Systemarchitektur" {
             -> eidServer "Schnittstelle" "SDK"
         }
 
-        person "Nutzer" {
+        person "Nutzer:in" {
             -> app "Verwendet"
         }
 
@@ -33,6 +33,10 @@ workspace "UseID" "Systemarchitektur" {
                 background #08427b
                 color #ffffff
             }
+        }
+
+        terminology {
+            softwareSystem Software-System
         }
     }
 }
