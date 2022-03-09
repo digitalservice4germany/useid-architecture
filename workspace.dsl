@@ -1,24 +1,36 @@
 workspace "UseID" "Systemarchitektur" {
     model {
-        nkb = softwareSystem "NKB" "" "Existing System" {
-        }
-
         eidServer = softwareSystem "eID-Server" "" "Existing System" {
         }
 
-        app = softwareSystem "bund ID App" "" "Software System" {
-            -> nkb "Schnittstelle" "OAuth 2.0"
-            -> eidServer "Schnittstelle" "SDK"
+        nkb = softwareSystem "NKB" "" "Existing System" {
+            -> eidServer "Schnittstelle" ""
+        }
+
+        app = softwareSystem "Bund ID App" "" "Software System" {
+            mobileApp = container "Mobile Applikation" "" "iOS/Android" "App" {
+                -> nkb "Schnittstelle" "HTTPS"
+                -> eidServer "Schnittstelle" ""
+            }
         }
 
         person "Nutzer:in" {
-            -> app "Verwendet"
+            -> mobileApp "Verwendet"
         }
-
-        
     }
 
     views {
+        systemContext app "System-Kontext" "" {
+            include *
+            autoLayout
+        }
+
+        container app "Containers" {
+            include *
+            autoLayout
+        }
+
+
         styles {
             element "Software System" {
                 background #1168bd
@@ -27,6 +39,13 @@ workspace "UseID" "Systemarchitektur" {
             element "Existing System" {
                 background #999999
                 color #ffffff
+            }
+            element "Container" {
+                background #438dd5
+                color #ffffff
+            }
+            element "App" {
+                shape MobileDevicePortrait
             }
             element "Person" {
                 shape person
