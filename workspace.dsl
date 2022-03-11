@@ -7,29 +7,38 @@ workspace "UseID" "Systemarchitektur" {
             -> eidServer "Schnittstelle" ""
         }
 
+        trustService = softwareSystem "Vertrauensdiensteanbieter" "" "Existing System" {
+            -> eidServer "Schnittstelle" ""
+        }
+
+        administrativeProcedure = softwareSystem "Fachverfahren" "" "Existing System, Web Browser" {
+            -> trustService "Schnittstelle" ""
+        }
+
         app = softwareSystem "Bund ID App" "" "Software System" {
             mobileApp = container "Mobile Applikation" "" "iOS/Android" "App" {
                 -> nkb "Schnittstelle" "HTTPS"
+                -> trustService "Signatur" "QES"
                 -> eidServer "Schnittstelle" ""
             }
+            qrCodeServer = container "QR-Code-Server" "" "Java" {
+            }
         }
+        administrativeProcedure -> mobileApp "Leitet auf" "QR Code"
+        administrativeProcedure -> qrCodeServer "Schnittstelle" "HTTPS"
 
         person "Nutzer:in" {
             -> mobileApp "Verwendet"
+            -> administrativeProcedure "Verwendet"
         }
     }
 
     views {
-        systemContext app "System-Kontext" "" {
-            include *
-            autoLayout
-        }
-
         container app "Containers" {
             include *
             autoLayout
+            title "Bund ID app Architecture"
         }
-
 
         styles {
             element "Software System" {
@@ -46,6 +55,9 @@ workspace "UseID" "Systemarchitektur" {
             }
             element "App" {
                 shape MobileDevicePortrait
+            }
+            element "Web Browser" {
+                shape WebBrowser
             }
             element "Person" {
                 shape person
