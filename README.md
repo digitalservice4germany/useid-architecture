@@ -6,7 +6,7 @@ Diagrams as code using [Structurizr](https://structurizr.com)
 
 ### Prerequisites
 
-Docker
+Docker:
 
 ```bash
 brew install docker --cask
