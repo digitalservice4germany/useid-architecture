@@ -4,15 +4,15 @@ workspace "UseID" "Systemarchitektur" {
         }
 
         nkb = softwareSystem "NKB" "" "Existing System" {
-            -> eidServer "Schnittstelle" ""
+            -> eidServer "" ""
         }
 
         trustService = softwareSystem "Vertrauensdiensteanbieter" "" "Existing System" {
-            -> eidServer "Schnittstelle" ""
+            -> eidServer "" ""
         }
 
         administrativeProcedure = softwareSystem "Fachverfahren" "" "Existing System, Web Browser" {
-            -> trustService "Schnittstelle" ""
+            -> trustService "" ""
         }
 
         app = softwareSystem "Bund ID App" "" "Software System" {
@@ -21,7 +21,7 @@ workspace "UseID" "Systemarchitektur" {
                 -> trustService "Signatur" "QES"
                 -> eidServer "Schnittstelle" ""
             }
-            qrCodeServer = container "QR-Code-Server" "" "Java" {
+            qrCodeServer = container "QR-Code-Server" "Web-based API" "Java, Spring WebFlux" {
             }
         }
         administrativeProcedure -> mobileApp "Leitet auf" "QR Code"
