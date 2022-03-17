@@ -16,10 +16,15 @@ workspace "UseID" "Systemarchitektur" {
         }
 
         app = softwareSystem "Bund ID App" "" "Software System" {
-            mobileApp = container "Mobile Applikation" "" "iOS/Android" "App" {
-                -> nkb "Schnittstelle" "HTTPS"
+            mobileApp = container "Mobile App" "" "iOS/Android" "App" {
+                eidClient = component "eID Client" "" "" {
+                    -> eidServer "Schnittstelle" "HTTPS"
+                }
+                bundidAPIClient = component "bund ID API Client" "" "" {
+                    -> nkb "Schnittstelle" "HTTPS"
+                }
+
                 -> trustService "Signatur" "QES"
-                -> eidServer "Schnittstelle" ""
             }
             qrCodeServer = container "QR-Code-Server" "Web-based API" "Java, Spring WebFlux" {
             }
@@ -37,7 +42,11 @@ workspace "UseID" "Systemarchitektur" {
         container app "Containers" {
             include *
             autoLayout
-            title "Bund ID app Architecture"
+        }
+
+        component mobileApp "AppComponents" {
+            include *
+            autoLayout
         }
 
         styles {
@@ -52,6 +61,11 @@ workspace "UseID" "Systemarchitektur" {
             element "Container" {
                 background #438dd5
                 color #ffffff
+            }
+            element "Component" {
+                shape Component
+                background #85bbf0
+                color #000000
             }
             element "App" {
                 shape MobileDevicePortrait
