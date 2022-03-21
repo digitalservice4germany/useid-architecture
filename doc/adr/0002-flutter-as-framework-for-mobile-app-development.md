@@ -4,11 +4,11 @@ Date: 2022-03-18
 
 ## Status
 
-Proposed
+Accepted
 
 ## Context
 
-With our product we will be targeting the two major mobile operating system iOS and Android. Either there can be two seperate codebases and teams to create an application for each platform or use a cross-platform framework like react-native or Flutter with only 1 codebbase compiling into applications for both platforms.
+With our product we will be targeting the two major mobile operating system iOS and Android. Either there can be two seperate codebases and teams to create an application for each platform or use a cross-platform framework like react-native or Flutter with only 1 codebase compiling into applications for both platforms.
 
 We had a look at native vs react-native vs Flutter.
 
@@ -25,7 +25,8 @@ We will use the cross-platform framework Flutter to create the application for t
 
 ## Consequences
 
-What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.
+The most obvious consequences are the following:
 
-- learn Flutter and Dart by and to create prototypes
-- seek professional help for the difficult aspects of getting started
+- learn Flutter and Dart by and to create prototypes,
+- seek professional help for the difficult aspects of getting started,
+- native library bindings need to be created from dart to the respective platform.
