@@ -34,8 +34,8 @@ app <-- server: return list of requested data
 note left: list of requested data
 user <-- app: display requested data
 user -> app: approve data request
-app -> smartphone: access NFT reader
-smartphone -> id as "ID card": scan NFT chip
+app -> smartphone: access NFC reader
+smartphone -> id as "ID card": scan NFC chip
 smartphone <-- id: return encrypted identity data
 note right: encrypted identity data
 app -> server: send encrypted identity data
