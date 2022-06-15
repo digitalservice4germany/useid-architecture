@@ -45,10 +45,6 @@ note left: encrypted identity data
 app <-- server: return success
 app -> backend: inform about success
 note right: sessionId
-backend -> server: get identity data
-note left: sessionId
-backend <-- server: return identity data
-note right: decrypted identity data
 backend -> widget: inform about success (via SSE)
 note right: sessionId
 widget -> browser: redirect to refreshAddress
@@ -56,8 +52,12 @@ note right: refreshAddress
 browser -> eService: access success page
 eService -> backend: get identity data
 note left: sessionId
+backend -> server: get identity data
+note left: sessionId
+backend <-- server: return identity data
+note right: decrypted identity data
 eService <-- backend: return identity data
-note right: (decrypted?) identity data
+note right: decrypted identity data
 eService --> browser: refresh page
 browser --> user: view page
 
