@@ -16,8 +16,7 @@ note left: tcTokenURL
 backend -> backend: generate QR Code
 note left: eIDClientURL
 widget <-- backend: return widget
-eService <-- widget:
-browser <-- eService:
+user <-- widget: display widget
 user -> smartphone as "Smartphone": open camera
 smartphone -> widget: scan QR Code
 smartphone <-- widget: return URL to eID Client
@@ -49,6 +48,7 @@ widget -> browser: redirect to refreshAddress
 note right: refreshAddress
 browser -> eService: access success page
 eService -> server: get identity data
+note left: sessionId
 eService <-- server: return identity data
 note right: decrypted identity data
 eService --> browser: refresh page
