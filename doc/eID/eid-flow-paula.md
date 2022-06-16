@@ -1,3 +1,9 @@
+## Paula flow
+
+The following flow displays the "Paula" eID flow. Paula depicts the flow for customers without eID integration using a simplified API provided by the Backend Server. 
+See [this confluence page](https://digitalservicebund.atlassian.net/wiki/spaces/UseID/pages/438829109/Components+and+Flows) for more information.
+
+```plantuml
 @startuml
 'https://plantuml.com/sequence-diagram
 
@@ -5,13 +11,16 @@ autonumber
 
 user as "User" ->browser: open
 browser as "Browser" -> eService: access webapp
-eService -> server as "eID Server": start session
-eService <-- server: return session identifier
+eService -> backend as "UseID Backend Server": start flow
+backend -> server as "eID Server": start session
+backend <-- server: return session identifier
 note right: sessionId
-eService -> eService: generate tcTokenURL
+backend -> backend: generate tcTokenURL
+eService <-- backend: return tcTokenURL
+note right: tcTokenURL
 eService -> widget as "UseID Web-Widget": integrate and send tcTokenURL
 note left: tcTokenURL
-widget -> backend as "UseID Backend Server": get widget with QR Code
+widget -> backend: get widget with QR Code
 note left: tcTokenURL
 backend -> backend: generate QR Code
 note left: eIDClientURL
@@ -23,8 +32,8 @@ smartphone <-- widget: return URL to eID Client
 note left: eIDClientURL
 smartphone -> app as "UseID Mobile App (eID Client)": open
 note left: tcTokenURL
-app -> eService: get tcToken from tcTokenURL
-app <-- eService: return tcToken
+app -> backend: get tcToken from tcTokenURL
+app <-- backend: return tcToken
 note right: tcToken
 app -> server: establish connection
 app <-- server: return list of requested data
@@ -47,11 +56,16 @@ note right: sessionId
 widget -> browser: redirect to refreshAddress
 note right: refreshAddress
 browser -> eService: access success page
-eService -> server: get identity data
+eService -> backend: get identity data
 note left: sessionId
-eService <-- server: return identity data
+backend -> server: get identity data
+note left: sessionId
+backend <-- server: return identity data
+note right: decrypted identity data
+eService <-- backend: return identity data
 note right: decrypted identity data
 eService --> browser: refresh page
 browser --> user: view page
 
 @enduml
+```
