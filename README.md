@@ -35,4 +35,4 @@ brew install adr-tools
 ## eID Flow
 
 Find the eID flows including all relevant components in `doc/eID/`. The files contain a [PlantUML](https://plantuml.com/) 
-representation of sequence diagrams. To display the diagrams use a suitable IDE plugin or copy it to [http://www.plantuml.com/plantuml/](http://www.plantuml.com/plantuml/).
+representation of sequence diagrams.
