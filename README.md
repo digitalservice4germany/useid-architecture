@@ -34,5 +34,4 @@ brew install adr-tools
 
 ## eID Flow
 
-Find the eID flows including all relevant components in `doc/eID/`. The files contain a [PlantUML](https://plantuml.com/) 
-representation of sequence diagrams.
+Find the eID flows including all relevant components in `doc/eID/`. The files contain [Mermaid sequence diagrams](https://mermaid-js.github.io/mermaid/#/sequenceDiagram). 
