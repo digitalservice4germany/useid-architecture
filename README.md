@@ -31,3 +31,7 @@ For adding new records the [adr-tools](https://github.com/npryce/adr-tools) comm
 ```bash
 brew install adr-tools
 ```
+
+## eID Flow
+
+Find the eID flows including all relevant components in `doc/eID/`. The files contain [Mermaid sequence diagrams](https://mermaid-js.github.io/mermaid/#/sequenceDiagram). 
