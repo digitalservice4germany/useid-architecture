@@ -45,7 +45,7 @@ sequenceDiagram
     id -->> smartphone: return <br>[encrypted identity data]
     smartphone -->> app: return <br>[encrypted identity data]
     app ->> server: send <br>[encrypted identity data]
-    server ->> server: decrypt <br>[encrypted identity data]
+    server ->> server: decrypt data <br>[identity data] 
     server -->> app: return success
     app ->> app: encrypt refreshURL with widgetSessionSecret <br>[encrypted refreshURL]
     app ->> backend: inform about success <br>[encrypted refreshURL, widgetSessionId]
@@ -54,7 +54,7 @@ sequenceDiagram
     widget ->> browser: redirect to <br>[refreshURL]
     browser ->> eService: access success page
     eService ->> server: get identity data <br>[sessionId]
-    server -->> eService: return identity data <br>[decrypted identity data]
+    server -->> eService: return identity data <br>[identity data]
     eService -->> browser: refresh page
     browser -->> user: view page
 ```
