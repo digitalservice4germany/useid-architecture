@@ -24,7 +24,7 @@ As value for `data-tc-token-url` the already known tcTokenURL is used.
 
 ### 2. ID process
 
-The process of scanning the eID has not changed for the eService. Changes for the users are in using the UseID mobile app and their smartphone as scanning devices.
+The underlying eID technology has not changed for the eService, including the process steps of scanning the identification document and PIN entry. Changes for the users are in using the UseID mobile app on their smartphones as scanning devices.
 
 ### 3. Success and Refresh
 
