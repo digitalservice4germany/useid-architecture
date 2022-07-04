@@ -21,13 +21,13 @@ sequenceDiagram
     browser ->> eService: access webapp
     eService ->> backend: start flow
     backend ->> server: start session
-    server -->> backend: return session identifier <br>[sessionId]
-    backend ->> backend: generate tcTokenURL
-    backend -->> eService: return <br>[tcTokenURL]
+    server -->> backend: return session identifier <br>[eIDSessionId]
+    backend ->> backend: generate <br>[tcTokenURL, useIDSessionId]
+    backend -->> eService: return <br>[tcTokenURL, useIDSessionId]
     eService ->> widget: integrate script which creates iframe <br>[tcTokenURL]
     widget ->> backend: (iframe) get widget page
-    backend -->> widget: return widget page
-    widget ->> widget: generate <br>[widgetSessionId, widgetSessionSecret]
+    backend -->> widget: return widget page <br>[widgetSessionId]
+    widget ->> widget: generate <br>[widgetSessionSecret]
     widget ->> backend: open SSE channel <br>[widgetSessionId]
     backend -->> widget: return
     widget ->> widget: generate QR Code <br>[eIDClientURL incl. tcTokenURL, widgetSessionId, widgetSessionSecret]
@@ -55,8 +55,8 @@ sequenceDiagram
     widget ->> widget: decrypt refreshURL with widgetSessionSecret <br>[refreshURL]
     widget ->> browser: redirect to <br>[refreshAddress]
     browser ->> eService: access success page
-    eService ->> backend: get identity data <br>[sessionId]
-    backend ->> server: get identity data <br>[sessionId]
+    eService ->> backend: get identity data <br>[useIDSessionId]
+    backend ->> server: get identity data <br>[eIDSessionId]
     server -->> backend: return <br>[identity data]
     backend -->> eService: return <br>[identity data]
     eService -->> browser: refresh page
