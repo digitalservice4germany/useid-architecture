@@ -20,9 +20,7 @@ sequenceDiagram
     user ->> browser: open
     browser ->> eService: access webapp
     eService ->> backend: start flow
-    backend ->> server: start session
-    server -->> backend: return session identifier <br>[eIDSessionId]
-    backend ->> backend: generate <br>[tcTokenURL, useIDSessionId]
+    backend ->> backend: generate <br>[tcTokenURL, useIDSessionId, widgetSessionId]
     backend -->> eService: return <br>[tcTokenURL, useIDSessionId]
     eService ->> widget: integrate script which creates iframe <br>[tcTokenURL]
     widget ->> backend: (iframe) get widget page
@@ -37,6 +35,8 @@ sequenceDiagram
     widget -->> smartphone: return <br>[eIDClientURL]
     smartphone ->> app: open via eIDClientURL <br>[tcTokenURL, widgetSessionId, widgetSessionSecret]
     app ->> backend: get tcToken from tcTokenURL
+    backend ->> server: start session
+    server -->> backend: return session identifier <br>[eIDSessionId]
     backend -->> app: return <br>[tcToken]
     app ->> server: establish connection
     server -->> app: return <br>[list of requested data]
