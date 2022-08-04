@@ -4,7 +4,7 @@ Date: 2022-06-24
 
 ## Status
 
-Accepted
+Superceded by [5. MVP mobile only](0005-mvp-mobile-only.md)
 
 ## Context
 

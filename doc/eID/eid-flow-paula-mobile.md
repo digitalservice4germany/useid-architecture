@@ -1,4 +1,4 @@
-## Paula flow
+## Paula flow (mobile only)
 
 The following flow displays the "Paula" eID flow. Paula depicts the flow for customers without eID integration using a simplified API provided by the Backend Server. 
 See [this confluence page](https://digitalservicebund.atlassian.net/wiki/spaces/UseID/pages/438829109/Components+and+Flows) for more information.
@@ -8,7 +8,7 @@ sequenceDiagram
     autonumber
     
     actor user as User
-    participant browser as Browser
+    participant browser as Mobile Browser
     participant eService as eService
     participant server as eID Server
     participant widget as UseID Web-Widget
@@ -20,20 +20,14 @@ sequenceDiagram
     user ->> browser: open
     browser ->> eService: access webapp
     eService ->> backend: start flow
-    backend ->> backend: generate <br>[tcTokenURL, useIDSessionId, widgetSessionId]
-    backend -->> eService: return <br>[tcTokenURL, useIDSessionId]
+    backend ->> backend: generate <br>[useIDSessionId, tcTokenURL]
+    backend -->> eService: return <br>[tcTokenURL incl. useIDSessionId]
     eService ->> widget: integrate script which creates iframe <br>[tcTokenURL]
     widget ->> backend: (iframe) get widget page
-    backend -->> widget: return widget page <br>[widgetSessionId]
-    widget ->> widget: generate <br>[widgetSessionSecret]
-    widget ->> backend: open SSE channel <br>[widgetSessionId]
-    backend -->> widget: return
-    widget ->> widget: generate QR Code <br>[eIDClientURL incl. tcTokenURL, widgetSessionId, widgetSessionSecret]
+    backend -->> widget: return widget page<br>[eIDClientURL incl. tcTokenURL]
     widget -->> user: display widget
-    user ->> smartphone: open camera
-    smartphone ->> widget: scan QR Code
-    widget -->> smartphone: return <br>[eIDClientURL]
-    smartphone ->> app: open via eIDClientURL <br>[tcTokenURL, widgetSessionId, widgetSessionSecret]
+    user ->> smartphone: click deep link in widget<br>[eIDClientURL]
+    smartphone ->> app: open via eIDClientURL <br>[tcTokenURL]
     app ->> backend: get tcToken from tcTokenURL
     backend ->> server: start session
     server -->> backend: return session identifier <br>[eIDSessionId]
@@ -49,16 +43,12 @@ sequenceDiagram
     app ->> server: send <br>[encrypted identity data]
     server ->> server: decrypt data <br>[identity data] 
     server -->> app: return success
-    app ->> app: encrypt refreshURL with widgetSessionSecret <br>[encrypted refreshURL]
-    app ->> backend: inform about success <br>[encrypted refreshURL, widgetSessionId]
-    backend ->> widget: inform about success (via SSE) <br>[encrypted refreshURL, widgetSessionId]
-    widget ->> widget: decrypt refreshURL with widgetSessionSecret <br>[refreshURL]
-    widget ->> browser: redirect to <br>[refreshAddress]
+    app -->> browser: open refresh address<br>[eIDSessionId]
     browser ->> eService: access success page
-    eService ->> backend: get identity data <br>[useIDSessionId]
+    eService ->> backend: get identity data <br>[eIDSessionId]
     backend ->> server: get identity data <br>[eIDSessionId]
     server -->> backend: return <br>[identity data]
     backend -->> eService: return <br>[identity data]
-    eService -->> browser: refresh page
+    eService -->> browser: display success page
     browser -->> user: view page
 ```
