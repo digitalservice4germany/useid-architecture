@@ -15,7 +15,7 @@ eService embeds widget via JavaScript by adding the following empty container to
 and including this script in the page:
 
 ```html
-<script async src="https://useid.ds4g.net/widget.js"></script>
+<script async src="https://eid.digitalservicebund.de/widget.js"></script>
 ```
 
 As value for `data-tc-token-url` the already known tcTokenURL is used.
