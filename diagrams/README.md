@@ -14,7 +14,18 @@ See https://structurizr.com/help/lite
 
 ```
 docker pull structurizr/lite
-docker run -it --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" structurizr/lite
+```
+
+#### Paula flow workspace
+
+```
+docker run -it --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-paula structurizr/lite
+```
+
+#### Magnus flow workspace
+
+```
+docker run -it --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-magnus structurizr/lite
 ```
 
 Open workspace in browser at http://localhost:8080

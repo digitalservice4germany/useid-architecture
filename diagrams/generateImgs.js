@@ -13,9 +13,9 @@ function run(cmd) {
   });
 }
 
-async function startContainer() {
+async function startContainer(flowName) {
   run(
-    'docker pull structurizr/lite && docker run --name structurizr -d --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" structurizr/lite'
+    'docker pull structurizr/lite && docker run --name structurizr -d --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-' + flowName + ' structurizr/lite'
   );
 
   // wait for container to become available
@@ -39,7 +39,7 @@ function stopContainer() {
   run("docker kill structurizr");
 }
 
-async function downloadImgs() {
+async function downloadImgs(flowName) {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(workspacePage);
@@ -60,7 +60,7 @@ async function downloadImgs() {
   await page.check("text=Automatically download");
 
   page.on("download", async (download) => {
-    await download.saveAs("./imgs/" + download.suggestedFilename());
+    await download.saveAs("./imgs/" + flowName + "/" + download.suggestedFilename());
     await download.delete();
   });
 
@@ -73,14 +73,19 @@ async function downloadImgs() {
   await browser.close();
 }
 
-(async () => {
+async function generateImages(flowName) {
   try {
-    await startContainer();
-    await downloadImgs();
+    await startContainer(flowName);
+    await downloadImgs(flowName);
   } catch(error) {
     console.error(error)
     process.exit(1)
   } finally {
-    stopContainer();
+    await stopContainer();
   }
+}
+
+(async () => {
+  await generateImages("paula")
+  await generateImages("magnus")
 })();
