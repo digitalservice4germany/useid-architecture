@@ -1,4 +1,4 @@
-# BundesIdent Integration
+# UseID Integration
 
 To integrate the BundesIdent mobile app and web widget, the following steps are necessary for services already having an existing eID integration.
 
