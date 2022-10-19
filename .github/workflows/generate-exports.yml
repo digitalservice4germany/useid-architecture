@@ -2,7 +2,7 @@ name: Generate Exports
 on: push
 
 jobs:
-  test:
+  generate-and-commit:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
