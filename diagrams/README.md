@@ -16,13 +16,13 @@ See https://structurizr.com/help/lite
 docker pull structurizr/lite
 ```
 
-#### Paula flow workspace
+**Paula flow workspace**
 
 ```
 docker run -it --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-paula structurizr/lite
 ```
 
-#### Magnus flow workspace
+**Magnus flow workspace**
 
 ```
 docker run -it --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-magnus structurizr/lite
@@ -38,3 +38,14 @@ but you can manually generate them with this command:
 ```bash
 npm i && npm run generate-images
 ```
+## Rendered Diagrams
+
+## Paula flow
+
+![System Landscape](imgs/paula/structurizr-1-SystemLandscape.png)
+![System Landscape Key](imgs/paula/structurizr-1-SystemLandscape-key.png)
+
+## Magnus flow
+
+![System Landscape](imgs/magnus/structurizr-1-SystemLandscape.png)
+![System Landscape Key](imgs/magnus/structurizr-1-SystemLandscape-key.png)
