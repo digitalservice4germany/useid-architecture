@@ -40,12 +40,12 @@ npm i && npm run generate-images
 ```
 ## Rendered Diagrams
 
-## Paula flow
+### Paula flow
 
 ![System Landscape](imgs/paula/structurizr-1-SystemLandscape.png)
 ![System Landscape Key](imgs/paula/structurizr-1-SystemLandscape-key.png)
 
-## Magnus flow
+### Magnus flow
 
 ![System Landscape](imgs/magnus/structurizr-1-SystemLandscape.png)
 ![System Landscape Key](imgs/magnus/structurizr-1-SystemLandscape-key.png)
