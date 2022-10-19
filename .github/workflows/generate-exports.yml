@@ -1,4 +1,4 @@
-name: Generate Images
+name: Generate Exports
 on: push
 
 jobs:
