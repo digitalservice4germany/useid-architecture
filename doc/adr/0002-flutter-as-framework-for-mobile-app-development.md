@@ -4,7 +4,7 @@ Date: 2022-03-18
 
 ## Status
 
-Superceded by [3. Native app development](0003-native-app-development.md)
+Superseded by [3. Native app development](0003-native-app-development.md)
 
 ## Context
 

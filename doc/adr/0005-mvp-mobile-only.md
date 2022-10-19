@@ -6,7 +6,7 @@ Date: 2022-08-03
 
 Accepted
 
-Supercedes [4. E2EE for Refresh Address](0004-e2ee-for-refresh-address.md)
+Supersedes [4. E2EE for Refresh Address](0004-e2ee-for-refresh-address.md)
 
 ## Context
 

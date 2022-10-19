@@ -6,7 +6,7 @@ Date: 2022-04-05
 
 Accepted
 
-Supercedes [2. Flutter as framework for mobile app development](0002-flutter-as-framework-for-mobile-app-development.md)
+Supersedes [2. Flutter as framework for mobile app development](0002-flutter-as-framework-for-mobile-app-development.md)
 
 ## Context
 
