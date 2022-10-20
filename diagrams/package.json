@@ -1,0 +1,14 @@
+{
+  "name": "diagrams",
+  "version": "1.0.0",
+  "description": "Generate structurizr diagrams",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "playwright": "^1.22.2",
+    "playwright-core": "^1.22.2"
+  },
+  "scripts": {
+    "generate-images": "node generateImgs.js"
+  },
+  "license": "MIT"
+}
