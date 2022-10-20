@@ -42,8 +42,12 @@ npm i && npm run generate-images
 
 ### Paula flow
 
+The Paula flow depicts the integration for eServices without existing eID integration.
+
 ![System Landscape](imgs/paula/structurizr-1-SystemLandscape.png)
 
 ### Magnus flow
+
+The Magnus flow depicts the integration for eServices with an existing eID integration.
 
 ![System Landscape](imgs/magnus/structurizr-1-SystemLandscape.png)
