@@ -24,5 +24,5 @@ known on start of the identification flow.
 
 ## Consequences
 
-Man-in-the-middle attacks on the TLS connection are possible if an attack can get in possession of a certificate
-for a legitimate server signed by a trusted root CA.
+A man-in-the-middle attack on the TLS connection is possible if an attacker comes into possession of a 
+certificate signed by a trusted root CA for a domain used in the identification flow.
