@@ -1,4 +1,4 @@
-# 7. Switch from eid:// to bundesident:// scheme
+# 7. Custom ClientURL scheme
 
 Date: 2022-12-13
 
@@ -8,22 +8,23 @@ Accepted
 
 ## Context
 
-The Technical Guideline TR-03124-1 eID-Client – Part 1 (version 1.4 from 8. October 2021, Chapter 2.2 Full eID-Client) specifies the URL scheme for the ClientURL. 
-Since we are implementing a mobile only approach, described in ADR 5, we need to define the ClientURL as follows: 'eid://127.0.0.1:24727/eID-Client'. 
-However, our eID-Client should not serve as a replacement of the currently available eID-Clients, e.g. AusweisApp2 (AA2). 
-Our ClientURL schema should only open our app (BundesIdent) and should not interfere with other eID-Clients. 
+The [Technical Guideline TR-03124-1](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/TechnischeRichtlinien/TR03124/TR-03124-1.pdf) specifies the URL scheme for the ClientURL. 
+For now, we are not aiming to be a full eID-Client. Therefore, we do not need to stick to the specified ClientURL in chapter 2.2. 
+Our ClientURL scheme should only open our app (BundesIdent) and should not interfere with other eID-Clients. 
 
 ## Decision
 
 Instead of <br>
-'eid://127.0.0.1:24727/eID-Client' <br>
+`eid://127.0.0.1:24727/eID-Client` <br>
 we use <br>
-'**bundesident**://127.0.0.1:24727/eID-Client' <br>
+`bundesident://127.0.0.1:24727/eID-Client` <br>
 
-as our ClientURL schema. 
+Referencing [ADR 13 - Format of the eID-Client URL](https://github.com/digitalservicebund/useid-backend-service/blob/main/doc/adr/0013-format-of-eid-client-url.md), 
+`bundesident://...` is used as universal link / app link for opening BundesIdent. 
+If the `bundesident://...`scheme does not open BundesIdent, `eid://...` is used as the fallback ClientURL, thus, any installed full eID-Client is opened.
 
 ## Consequences
 
-BundesIdent, e.g. our eID-Client, will only open when the user tries to identify for our own service (https://www.grundsteuererklaerung-fuer-privateigentum.de/), due to the individual schema 'bundesident://''.<br>
-Other eServices that conform to the 'eid://' schema will not be able to open BundesIdent, they will use the installed standard eID-Clients, like AA2.  
+BundesIdent, e.g. our eID-Client, will only open when the user tries to identify for eServices using our BundesIdent widget.
+Other eServices that conform to the `eid://...` scheme will not be able to open BundesIdent, they will use the full eID-Clients, like AA2.  
 
