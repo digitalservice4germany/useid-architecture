@@ -1,6 +1,3 @@
-https://digitalservicebund.slack.com/archives/C03EETLE16Y/p1663684515317499
-
-
 # 8. SOAP over SAML
 
 Date: 2022-12-21
