@@ -1,4 +1,4 @@
-# 5. No certificate pinning
+# 6. No certificate pinning
 
 Date: 2022-12-01
 
