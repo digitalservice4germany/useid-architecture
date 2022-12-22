@@ -10,11 +10,11 @@ Accepted
 
 According to the [TR-03130 eID-Server Part 1](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/TechnischeRichtlinien/TR03130/TR-03130_TR-eID-Server_Part1.pdf)
 chapter 2.3.1, the eID-Server provides two interfaces: 
-- SAOP (Simple Object Access Protocol)
+- SOAP (Simple Object Access Protocol)
 - SAML (Security Assertion Markup Language)
 
-We need to decide for one interface.<br> 
-_(Flow charts for both approaches, of the eID-Server implementation we use, can be found in the 'Integrationshandbuch für den eID-Service der D-Trust, Version 2.0.0')_
+We need to decide for one interface.
+(Flow charts for both approaches, of the eID-Server implementation we use, can be found in the _Integrationshandbuch für den eID-Service der D-Trust, Version 2.0.0_)
 
 ## Decision
 
