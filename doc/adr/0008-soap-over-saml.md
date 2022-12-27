@@ -23,7 +23,9 @@ ID data is passed to us as a SAML response from the eID-Server, and we are requi
 **SOAP**: <br>
 ID data is stored with the eID-Server and the eService will request the data directly from there, through us.
 
-(Flow charts for both approaches of the eID-Server implementation can be found in the _Integrationshandbuch für den eID-Service der D-Trust, Version 2.0.0_)
+Flow charts for both approaches of the eID-Server implementation can be found in the TR-03130 Technical Guideline:
+- eID-Service (SOAP) — 3.1.2 Interaction, page 19  
+- SAML — 3.1.2 Interaction, page 52 
 
 ## Decision
 
