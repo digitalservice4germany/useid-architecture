@@ -13,9 +13,10 @@ function run(cmd) {
   });
 }
 
+const structurizrVersion = 2892;
 async function startContainer(flowName) {
   run(
-    'docker pull structurizr/lite && docker run --name structurizr -d --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-' + flowName + ' structurizr/lite'
+    `docker pull structurizr/lite:${structurizrVersion} && docker run --name structurizr -d --rm -p 8080:8080 -v "$(pwd):/usr/local/structurizr" -e STRUCTURIZR_WORKSPACE_FILENAME=workspace-${flowName} structurizr/lite:${structurizrVersion}`
   );
 
   // wait for container to become available
@@ -54,7 +55,6 @@ async function downloadImgs(flowName) {
   // allow workspace to load fully
   await page.waitForLoadState("networkidle");
 
-  await page.click('text=× Diagram editor >> [aria-label="Close"]');
   await page.click('[title="Export diagram and key/legend to PNG"]');
   await page.check("text=Crop diagrams");
   await page.check("text=Automatically download");
