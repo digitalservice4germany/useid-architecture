@@ -18,21 +18,21 @@ sequenceDiagram
     
     user ->> browser: open
     browser ->> eService: access webapp
-    eService -->> browser: sends page with embedded iframe
-    eService ->> widget: inserts TcToken url into iframe
-    widget ->> webAuthnServer: (iframe) get widget page
-    webAuthnServer -->> widget: return widget page
+    eService -->> browser: sends page with embedded iframe and inserts tcTokenURL
+    browser ->> webAuthnServer: (iframe) get widget page
+    webAuthnServer -->> browser: return widget page
+    browser -->> widget: runs widget code
     widget ->> widget: create key pair used for encryption of refreshURL
-    widget -->> user: display QR code with TcTokenUrl + public key
+    widget -->> user: display QR code with tcTokenURL + public key
     user ->> smartphone: use smartphone to scan QR code
-    smartphone ->> app: open via link embedded in QR code
+    smartphone ->> app: open via eIDClientURL embedded in QR code
     app ->> eService: get tcToken from tcTokenURL
     eService ->> server: start session
     server -->> eService: return session identifier <br>[eIDSessionId]
     eService -->> app: return <br>[tcToken, cert hash + domain of WAS]
     app ->> server: establish connection
-    Note over app, server: Normal eId flow interaction
-    server -->> app: return success of eId interaction
+    Note over app, server: Normal eID flow interaction
+    server -->> app: return success of eID interaction
     app ->> webAuthnServer: create TLS connection
     webAuthnServer -->> app: return <br>[TLS certificate]
     app ->> app: validate TLS connection with info from eService
