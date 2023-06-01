@@ -1,4 +1,5 @@
 # UseID Architecture
+Background documentation and overview of the UseId architecture
 
 ## Architecture Diagrams
 
