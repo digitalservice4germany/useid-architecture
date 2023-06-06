@@ -9,6 +9,15 @@ to use an eService on one device (e.g. a desktop computer) while executing the i
 on another device (e.g. the smartphone) with the eID-Client only running on the second device. 
 The flow makes use of a QR code to allow an easy transition between devices.
 
+## Overview
+
+* The following section describes the desired QR-Code based flow.
+* The [problem statement](problem-statement.md) lays out the problems with the desired solution bye means of a phishing attack scenario.
+* The [evaluation of approaches](evaluation-of-approaches.md) shows an overview of all considered mitigation strategies
+for the phishing attack vector.
+* The [proposal](proposal-qr-code-based-device-switch-with-webauthn.md) describes a possible solution approach 
+which makes use of WebAuthn to ensure a secure switch between devices.
+
 ## Flow
 
 ### Description
