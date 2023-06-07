@@ -14,9 +14,14 @@ For adding new records the [adr-tools](https://github.com/npryce/adr-tools) comm
 brew install adr-tools
 ```
 
-## eID Flow and Integration
+## Identification Flows
 
-Find the eID flows including all relevant components and integration docs in `doc/eID`. The flow files contain [Mermaid sequence diagrams](https://mermaid-js.github.io/mermaid/#/sequenceDiagram). 
+The `flows` directory contains descriptions of the identification flows of the UseID identity solution
+including [Mermaid sequence diagrams](https://mermaid-js.github.io/mermaid/#/sequenceDiagram). 
+
+## Research
+
+The `research` directory contains documentation on research conducted on specific topics. 
 
 ## Contributing
 
