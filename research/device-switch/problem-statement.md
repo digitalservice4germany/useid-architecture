@@ -5,7 +5,7 @@
 The `tcTokenUrl` and the corresponding `refreshAddress` inside the `tcToken` contain sensitive information.
 By using phishing, an attacker can start a legitimate flow with an eService, forward the `tcTokenUrl` to a victim,
 who identifies for this session, and call the `refreshAddress` of the victim on their device.
-Since there is no second authentication to the `refreshAddress`, just by knowing  and being the first
+Since there is no second authentication to the `refreshAddress`, just by knowing and being the first
 one to open it, the attacker can impersonate the user.
 
 ## Phishing attack
