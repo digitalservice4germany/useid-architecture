@@ -3,7 +3,8 @@
 ## Problem 
 
 The `tcTokenUrl` and the corresponding `refreshAddress` inside the `tcToken` contain sensitive information.
-By using phishing, an attacker can start a legitimate flow with an eService, forward the `tcTokenUrl` to a victim,
+If the reading of the identity card happens on a separate device than the normal identification flow and both devices are not bound an attacker could launch a phishing attack.
+An attacker can start a legitimate flow with an eService, forward the `tcTokenUrl` to a victim,
 who identifies for this session, and call the `refreshAddress` of the victim on their device.
 Since there is no second authentication to the `refreshAddress`, just by knowing and being the first
 one to open it, the attacker can impersonate the user.
