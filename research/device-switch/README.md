@@ -3,7 +3,7 @@
 ## Goal
 
 Many users still like to use their desktop computers to use governmental services. To identify with 
-the BundesIdent app eID-Client they need to switch to the smartphone.
+the BundesIdent app eID-Client they need to switch to the smartphone. The current solution requires the user to install a separate application on the desktop and pair their smartphone as a card reading device with the desktop app.
 The following flow describes an adapted identification flow including a device switch with the goal to allow the user 
 to use an eService on one device (e.g. a desktop computer) while executing the identification 
 on another device (e.g. the smartphone) with the eID-Client only running on the second device. 
